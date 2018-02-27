@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Opinions</title>
+    <link rel="stylesheet" href="opinions.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+<div id="upperBar">
+    <p id="logo">Just say it!</p>
+    <a href="index.jsp">Logout</a>
+</div>
+
+<div id="separate"></div>
+
+<div >
+    <div id="posts"></div>
+</div>
+
+<script>
+    function getPosts() {          //trimitem parerea catre servlet
+        $.ajax({
+            url: 'postIt?action=read'
+        }).done(function (response) {
+            putQuestionsInHTML(response.posts);
+        });
+    }
+    function putQuestionsInHTML(posts) {
+        var divPost = document.getElementById('posts');
+        var ol = document.getElementById('posts');
+        var list = '';
+        for (var i = 0; i < posts.length; i++) {
+            var name = posts[i].name;
+            var opinion = posts[i].opinion;
+            var date = posts[i].date;
+            var allOpinions = '<div class="posts"><p>'+name+'</p><p>'+opinion+'</p><p>'+date+'</p></div>';
+            list = list + allOpinions;
+        }
+        ol.innerHTML = list;
+    }
+    getPosts();
+</script>
+</body>
+</html>

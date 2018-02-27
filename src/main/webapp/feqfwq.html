@@ -1,0 +1,174 @@
+
+<html>
+<head>
+    <!-- demo purposes, js functions are intentionally duplicated to enable copy paste in other apps -->
+    <title> demo of basic ajax calls</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+
+
+<div id="listOfPersons">
+
+</div>
+
+</br>
+
+<div id="htmlSelect">
+
+</div>
+
+
+</br>
+
+<div id="htmlRadio">
+
+</div>
+
+
+</br>
+
+<div id="htmlCheck">
+
+</div>
+
+</br>
+</br>
+<h3>input</h3>
+<div id ="sendSomething">
+    <input type="text" id="namePerson" name="namePerson" placeholder="Name" />
+    <input type="button" id="add" value="SendIt"  onClick="addName()"/>
+</div>
+
+<h3>search</h3>
+<div id ="searchSomething">
+    <input type="text" id="searchPerson" name="searchPerson" placeholder="search for" list ="s" oninput="searchPerson()" />
+    <datalist id="s">
+    </datalist>
+</div>
+</br>
+
+
+<div id="listOfPersonsSearch">
+
+</div>
+
+
+</body>
+
+<script>
+    //demo purposes, js functions are intentionally duplicated to enable copy paste in other apps
+    // just doing an ajax call
+    function loadPersons() {
+        $.ajax({
+            url: 'demoRW?action=read'
+        }).done(function (response) {
+            putPersonsInHTML(response.pers);
+        });
+    }
+    function putPersonsInHTML(pers) {
+        var divPersons = document.getElementById('listOfPersons');
+        var list = '';
+        for (var i = 0; i < pers.length; i++) {
+            var per = pers[i];
+            list = list + per + ' ';
+        }
+        divPersons.innerText = list;
+    }
+    loadPersons();
+    // just doing an ajax call
+    function loadPersonsInASelect() {
+        $.ajax({
+            url: 'demoRW?action=read'
+        }).done(function (response) {
+            putPersonsInASelect(response.pers);
+            putPersonsInARadio(response.pers);
+            putPersonsInACheck(response.pers);
+        });
+    }
+    function putPersonsInASelect(pers) {
+        var divPersons = document.getElementById('htmlSelect');
+        //Create and append select list
+        var selectList = document.createElement("select");
+        selectList.id = "personSelect";
+        divPersons.appendChild(selectList);
+        //Create and append the options
+        for (var i = 0; i < pers.length; i++) {
+            var option = document.createElement("option");
+            option.value = pers[i];
+            option.text = pers[i];
+            selectList.appendChild(option);
+        }
+    }
+    function putPersonsInARadio(pers) {
+        var divPersons = document.getElementById('htmlRadio');
+        //Create and append the options
+        for (var i = 0; i < pers.length; i++) {
+            var label = document.createElement('label');
+            var radio = document.createElement("input");
+            radio.setAttribute("type", "radio");
+            radio.setAttribute("name", "pers"); // name needs to be unique
+            radio.setAttribute("value", pers[i]);
+            label.innerText=pers[i];
+            divPersons.appendChild(radio);
+            divPersons.appendChild(label);
+        }
+    }
+    function putPersonsInACheck(pers) {
+        var divPersons = document.getElementById('htmlCheck');
+        //Create and append the options
+        for (var i = 0; i < pers.length; i++) {
+            var label = document.createElement('label');
+            var radio = document.createElement("input");
+            radio.setAttribute("type", "checkbox");
+            radio.setAttribute("name", "pers"+i);
+            radio.setAttribute("value", pers[i]);
+            label.innerText=pers[i];
+            divPersons.appendChild(radio);
+            divPersons.appendChild(label);
+        }
+    }
+    function addName() {
+        var nameP = document.getElementById('namePerson').value;
+        $.ajax({
+            url: 'demoRW?action=write&newName=' + nameP
+        }).done(function (response) {
+            location.href = "index.html";
+        });
+    }
+    function searchPerson() {
+        var nameP = document.getElementById('searchPerson').value;
+        $.ajax({
+            url: 'demoRW?action=search&searchName=' + nameP
+        }).done(function (response) {
+            putPersonsInHTMLSearch(response.searchPers);
+            putPersonsInDataListSearch(response.searchPers);
+        });
+    }
+    function putPersonsInHTMLSearch(pers) {
+        var divPersons = document.getElementById('listOfPersonsSearch');
+        divPersons.innerHTML=''; // reset at each search
+        var list = '';
+        for (var i = 0; i < pers.length; i++) {
+            var per = pers[i];
+            list = list + per + ' ';
+        }
+        divPersons.innerText = list;
+    }
+    function putPersonsInDataListSearch(pers) {
+        var datalistv = document.getElementById('s');
+        datalistv.innerHTML=''; // reset at each search
+        //Create and append the options
+        for (var i = 0; i < pers.length; i++) {
+            var option = document.createElement("option");
+            option.value = pers[i];
+            option.text = pers[i];
+            datalistv.appendChild(option);
+        }
+    }
+    loadPersonsInASelect();
+</script>
+
+
+</html>

@@ -1,0 +1,17 @@
+#upperBar {
+    background-color: darksalmon;
+
+}
+
+#logo {
+    float: left;
+    margin-right: 20%;
+    font-family: "Goudy Stout";
+    font-size: larger;
+    padding-left: 15%;
+}
+
+.credentials {
+    padding-top: 1%;
+
+}

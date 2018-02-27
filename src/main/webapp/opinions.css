@@ -1,0 +1,26 @@
+#upperBar {
+    background-color: darksalmon;
+    height: 60px;
+}
+
+#logo {
+    float: left;
+    margin-right: 60%;
+    font-family: "Goudy Stout";
+    font-size: larger;
+    padding-left: 15%;
+}
+
+#separate {
+    clear: left;
+}
+
+.posts {
+    float: left;
+    margin: 2%;
+    border:groove;
+    border-color: darksalmon;
+    padding: 1%;
+
+}
+
