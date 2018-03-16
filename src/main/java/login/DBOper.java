@@ -3,9 +3,9 @@ package login;
 import java.sql.*;
 
 public class DBOper {
-    final static String URL = "jdbc:postgresql://54.93.65.5:5432/laura7";
-    final static String USERNAME = "fasttrackit_dev";
-    final static String PASSWORD = "fasttrackit_dev";
+    public final static String URL = "jdbc:postgresql://54.93.65.5:5432/laura7";
+    public final static String USERNAME = "fasttrackit_dev";
+    public final static String PASSWORD = "fasttrackit_dev";
 
     /* -1 daca nu am gasit , id-ul daca am gasit */
     public int login(String user, String pwd) {
@@ -15,7 +15,7 @@ public class DBOper {
             Class.forName("org.postgresql.Driver");
             Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
-            PreparedStatement pSt = conn.prepareStatement("SELECT user_id FROM usersaccounts where username='"+user+"' and password='"+pwd+"'");
+            PreparedStatement pSt = conn.prepareStatement("SELECT user_id FROM usersaccounts where (username='"+user+ "' or email='"+ user + "') and password='"+pwd+"'");
             ResultSet rs = pSt.executeQuery();
 
             while (rs.next()) {

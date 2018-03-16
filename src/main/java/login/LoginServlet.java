@@ -1,5 +1,7 @@
 package login;
 
+import users.User;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,22 +24,24 @@ public class LoginServlet extends HttpServlet{
         DBOper d = new DBOper();
         int value = d.login(u, p);
 
+
         if(value!=-1) { // user logat
             HttpSession session = request.getSession();
             session.setAttribute("userid", value);
+            session.setAttribute("username", u);
             System.out.println("LoginServlet: bravoooo  ");
 
-            response.sendRedirect("opinions.html");
+            response.sendRedirect("opinions.jsp");
         }
-        else
-        {
+        else {
             System.out.println("LoginServlet: user/pwd NOT FOUND in db, retry a new one on the UI ");
             String back = "/index.jsp";
             HttpSession session = request.getSession();
             session.removeAttribute("userid");
+            session.removeAttribute("username");
+            session.setAttribute("flag", true);
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(back);
             dispatcher.forward(request, response);
         }
-
     }
 }

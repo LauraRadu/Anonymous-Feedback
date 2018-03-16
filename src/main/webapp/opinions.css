@@ -1,26 +1,60 @@
+body {
+    background-image:url("https://wallpaperscraft.com/image/star_background_light_69659_602x339.jpg") ;
+}
+
 #upperBar {
     background-color: darksalmon;
-    height: 60px;
+    height: 80px;
+    position:absolute;
+    left:0;
+    right:0;
+    top:0;
 }
 
 #logo {
-    float: left;
-    margin-right: 60%;
+    padding-top: 2%;
+    padding-left: 10%;
     font-family: "Goudy Stout";
     font-size: larger;
-    padding-left: 15%;
+}
+
+#welcome {
+    float: right;
+    padding-right: 1%;
 }
 
 #separate {
-    clear: left;
+    clear: both;
 }
 
 .posts {
     float: left;
     margin: 2%;
-    border:groove;
+    border: groove;
     border-color: darksalmon;
     padding: 1%;
-
+    height: 230px;
+    max-width: 320px;
+    min-width: 110px;
+    position: relative;
+    background-color: #c4dbff;
+    margin-top: 120px;
 }
 
+.hour, .date {
+    font-size: smaller;
+    font-weight: bold;
+}
+
+.hour {
+    position: absolute;
+    bottom: 2%;
+    left: 2%;
+}
+
+.date {
+    position: absolute;
+    bottom: 2%;
+    right: 2%;
+
+}

@@ -22,8 +22,7 @@ public class OpinionServlet extends HttpServlet {
 
         if (action != null && action.equals("read"))
             read(req, resp);
-        else
-        if (action != null && action.equals("write"))
+        else if (action != null && action.equals("write"))
             write(req, resp);
     }
 
@@ -40,7 +39,7 @@ public class OpinionServlet extends HttpServlet {
 
         JSONObject json = new JSONObject();
         try {
-            json.put("posts", op.getListOfPosts());
+            json.put("posts", op.getListOfPosts(iduser));
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -54,18 +53,32 @@ public class OpinionServlet extends HttpServlet {
 
         String name = req.getParameter("namePerson");
         String opinion = req.getParameter("opinion");
+        String[] persons;
+        String str = req.getParameter("personsTo");
+
+        persons = str.split(",");
+        for (int i = 0; i < persons.length; i++) {
+            System.out.println(persons[i]);
+        }
         Opinion op = new Opinion(name, opinion);
-
         OpinionDB opDB = new OpinionDB();
-        try {
-            opDB.addOpinionDB(op);
-        } catch (ClassNotFoundException e) {
 
+        try {
+                if(persons!=null) {
+                    long[] ids = opDB.getListId(persons);
+                    int idOpinion = opDB.addOpinionDB(op);
+
+                    opDB.addIntermediarOpinion(idOpinion, ids);
+                }
+        } catch (ClassNotFoundException e) {
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
+    public static void main(String[] args) {
+
+    }
 
     private void returnJsonResponse(HttpServletResponse response, String jsonResponse) {
         response.setContentType("application/json");

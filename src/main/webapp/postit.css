@@ -1,17 +1,37 @@
+
+body {
+    background-image:url("https://wallpaperscraft.com/image/star_background_light_69659_602x339.jpg") ;
+}
+
 #upperBar {
     background-color: darksalmon;
+    height: 80px;
+    position:absolute;
+    left:0;
+    right:0;
+    top:0;
+}
 
+#sendSomething {
+    margin-top: 120px;
+    margin-left: 4%;
 }
 
 #logo {
-    float: left;
-    margin-right: 20%;
+    padding-top: 0.8%;
+    padding-left: 10%;
     font-family: "Goudy Stout";
     font-size: larger;
-    padding-left: 15%;
+    float: left;
+
 }
 
-.credentials {
+#login {
+    padding-left: 60%;
     padding-top: 1%;
+}
 
+#alertMessage {
+    color: red;
+    font-weight: bold;
 }

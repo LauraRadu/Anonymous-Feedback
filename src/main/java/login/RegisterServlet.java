@@ -28,14 +28,12 @@ public class RegisterServlet extends HttpServlet{
         if(value!=-1) { // user logat
             HttpSession session = request.getSession();
             session.setAttribute("userid", value);
+            session.setAttribute("username", name);
             System.out.println("LoginServlet: bravoooo  ");
 
-            response.sendRedirect("opinions.html");
-
+            response.sendRedirect("opinions.jsp");
         }
-        else
-        {
-
+        else {
             System.out.println("LoginServlet:registration not done correctly ");
             String back = "/register.html";
             HttpSession session = request.getSession();
@@ -43,7 +41,5 @@ public class RegisterServlet extends HttpServlet{
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(back);
             dispatcher.forward(request, response);
         }
-
     }
-
 }
