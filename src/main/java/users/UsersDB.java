@@ -15,7 +15,7 @@ public class UsersDB {
             Connection conn = DriverManager.getConnection(DBOper.URL, DBOper.USERNAME, DBOper.PASSWORD);
 
 
-            PreparedStatement pSt = conn.prepareStatement("SELECT user_id, username FROM usersaccounts");
+            PreparedStatement pSt = conn.prepareStatement("SELECT user_id, username FROM usersaccounts ORDER BY username");
             ResultSet rs = pSt.executeQuery();
 
             while (rs.next()) {
@@ -40,6 +40,22 @@ public class UsersDB {
         for (String s : l
              ) {
             System.out.println(s);
+        }
+
+        List<Integer> list = new ArrayList<>();
+        list.add(2);
+        list.add(33);
+        System.out.println(list);
+        for(int i=0; i<10 ; ) {
+            i = i++;
+            System.out.println("Hello World");
+        }
+
+
+       final int a =2;
+        int b=3;
+        switch(b) {
+            case a:
         }
     }
 }

@@ -36,31 +36,31 @@ public class DBOper {
 
 
     /* -1 daca nu am gasit , id-ul daca am gasit */
-    public int register(String email, String user, String pwd) {
+    public int register(String email, String user, String pwd, String confirmPwd) {
 
         int found = -1;
-        try {
-            Class.forName("org.postgresql.Driver");
-            Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+        if(pwd.equals(confirmPwd)) {
+            try {
+                Class.forName("org.postgresql.Driver");
+                Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
-            PreparedStatement pSt = conn.prepareStatement("INSERT INTO usersaccounts (email,username,password) VALUES (?,?,?)");
-            pSt.setString(1, email);
-            pSt.setString(2, user);
-            pSt.setString(3, pwd);
+                PreparedStatement pSt = conn.prepareStatement("INSERT INTO usersaccounts (email,username,password) VALUES (?,?,?)");
+                pSt.setString(1, email);
+                pSt.setString(2, user);
+                pSt.setString(3, pwd);
 
-            int rowsInserted = pSt.executeUpdate();
+                int rowsInserted = pSt.executeUpdate();
 
-            pSt.close();
+                pSt.close();
 
-            conn.close();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
+                conn.close();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
-
         return found;
-
     }
 
     public static void main(String[] args) {

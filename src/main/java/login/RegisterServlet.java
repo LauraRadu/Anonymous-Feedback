@@ -19,10 +19,11 @@ public class RegisterServlet extends HttpServlet{
         String email = request.getParameter("email");
         String name = request.getParameter("u");
         String password = request.getParameter("p");
+        String repeatPassword = request.getParameter("rp");
 
         DBOper d = new DBOper();
 
-        d.register(email,name,password);
+        d.register(email,name,password,repeatPassword);
         int value = d.login(name,password);
 
         if(value!=-1) { // user logat
@@ -35,9 +36,10 @@ public class RegisterServlet extends HttpServlet{
         }
         else {
             System.out.println("LoginServlet:registration not done correctly ");
-            String back = "/register.html";
+            String back = "/register.jsp";
             HttpSession session = request.getSession();
             session.removeAttribute("userid");
+            session.setAttribute("flagRegister", true);
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(back);
             dispatcher.forward(request, response);
         }

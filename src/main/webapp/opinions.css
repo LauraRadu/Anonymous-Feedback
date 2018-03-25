@@ -3,24 +3,34 @@ body {
 }
 
 #upperBar {
-    background-color: darksalmon;
+    background: #636dfb;
+    background: linear-gradient(#2e289f,#636dfb);
     height: 80px;
     position:absolute;
     left:0;
     right:0;
     top:0;
+
+}
+
+#separate {
+    margin-bottom: 110px;
 }
 
 #logo {
-    padding-top: 2%;
+    padding-top: 1%;
     padding-left: 10%;
     font-family: "Goudy Stout";
     font-size: larger;
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
 }
 
 #welcome {
     float: right;
-    padding-right: 1%;
+    padding-right: 5%;
+    color: whitesmoke;
+    text-shadow: 1px 1px grey;
 }
 
 #separate {
@@ -30,15 +40,17 @@ body {
 .posts {
     float: left;
     margin: 2%;
-    border: groove;
-    border-color: darksalmon;
+    border:1px solid #9a9975;
+    border-radius: 8px;
+    box-shadow: 8px 8px 4px #979797;
     padding: 1%;
     height: 230px;
     max-width: 320px;
     min-width: 110px;
     position: relative;
-    background-color: #c4dbff;
-    margin-top: 120px;
+    background: #c4dbff;
+    background: linear-gradient(#c4dbff,whitesmoke);
+
 }
 
 .hour, .date {

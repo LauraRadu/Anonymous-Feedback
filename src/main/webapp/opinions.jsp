@@ -3,6 +3,7 @@
 <%
     HttpSession s = request.getSession();
     session.removeAttribute("flag");
+    session.removeAttribute("flagRegistration");
     Object o = s.getAttribute("userid");
     if(o==null)
     {
@@ -17,13 +18,22 @@
     <link rel="stylesheet" href="opinions.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+    @media print{
+        body{ background-color:#FFFFFF; background-image:none; color:#000000 }
+        #ad{ display:none;}
+        #leftbar{ display:none;}
+        #contentarea{ width:100%;}
+    }
+</style>
+
 </head>
 
 <body>
 
 <div id="upperBar">
     <div id="welcome">
-        <p>Welcome, <%=session.getAttribute("username")%>
+        <p>Welcome, <%=session.getAttribute("username")%>!
         </p>
         <a href="logout">Logout</a>
     </div>

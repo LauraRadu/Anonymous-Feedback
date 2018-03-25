@@ -1,37 +1,128 @@
 
 body {
     background-image:url("https://wallpaperscraft.com/image/star_background_light_69659_602x339.jpg") ;
+
 }
 
 #upperBar {
-    background-color: darksalmon;
     height: 80px;
     position:absolute;
     left:0;
     right:0;
     top:0;
+    background: #636dfb;
+    background: linear-gradient(#2e289f,#636dfb);
+    text-shadow: 1px 1px grey;
+}
+
+#rules {
+    float: left;
+    width: 45%;
+    min-height: 100%;
+    margin-left: 100px;
+    margin-top: 100px;
+    font-family: "Arial Rounded MT Bold";
+}
+
+.rule {
+
+}
+
+#rulesTop {
+    padding-left: 10%;
 }
 
 #sendSomething {
     margin-top: 120px;
-    margin-left: 4%;
+    margin-right:10%;
+    background: #c4dbff;
+    background: linear-gradient(#6080fe,whitesmoke);
+    padding:   2% 6% 4% 3%;
+    box-shadow: 10px 10px 5px #979797;
+    border-radius: 8px;
+    float: right;
+    font-size: large;
 }
 
 #logo {
     padding-top: 0.8%;
-    padding-left: 10%;
+    margin-left: 10%;
     font-family: "Goudy Stout";
     font-size: larger;
     float: left;
-
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
 }
 
 #login {
-    padding-left: 60%;
     padding-top: 1%;
+    margin-right: 10%;
+    float: right;
 }
 
-#alertMessage {
+.credential {
+    border: 1px solid #e2e00e;
+    border-radius: 5px;
+    background-color: #f2f1b8;
+    padding: 5px 10px;
+}
+
+#alertMessage,#alertMessageInput {
     color: red;
     font-weight: bold;
 }
+
+#alertMessageInput {
+    padding-top: 10px;
+}
+
+#register {
+    float: right;
+}
+
+#suggestionsSendTo {
+    width: 55%;
+}
+
+#suggestionsSendTo.checkbox {
+    display: inline-block;
+}
+
+#suggestions {
+    height: 100px;
+
+}
+
+button {
+    border: 1px solid #e2e00e;
+    border-radius: 5px;
+    background-color: #f2f1b8;
+    padding: 5px 10px;
+}
+
+#personsTo {
+    color: #683b98;
+    font-size: large;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 20px;
+   border-left: double;
+    padding-left: 10px;
+    border-color: #636dfb;
+    margin-left: 20px;
+}
+
+#opinion {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 5px 5px 3px #979797;
+
+}
+
+#namePerson, #sendTo {
+    border-radius: 4px;
+    box-shadow: 5px 5px 3px #979797;
+    padding-top: 3px;
+}
+

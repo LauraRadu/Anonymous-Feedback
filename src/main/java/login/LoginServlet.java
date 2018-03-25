@@ -29,6 +29,7 @@ public class LoginServlet extends HttpServlet{
             HttpSession session = request.getSession();
             session.setAttribute("userid", value);
             session.setAttribute("username", u);
+            session.removeAttribute("flag");
             System.out.println("LoginServlet: bravoooo  ");
 
             response.sendRedirect("opinions.jsp");

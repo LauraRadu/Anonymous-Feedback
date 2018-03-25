@@ -90,10 +90,12 @@ public class OpinionDB {
 
         for (long id: s
              ) {
-            pSt.setLong(1, idOpinion);
-            pSt.setObject(2, id);
+            if(id!=0) {
+                pSt.setLong(1, idOpinion);
+                pSt.setObject(2, id);
 
-            pSt.addBatch();
+                pSt.addBatch();
+            }
         }
         pSt.executeBatch();
 
