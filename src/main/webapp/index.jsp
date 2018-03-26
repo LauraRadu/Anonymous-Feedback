@@ -24,11 +24,11 @@
 
 <div id="rules">
     <h1 id="rulesTop">Keep in mind:</h1>
-    <h2 class="rule">Positive feedback is eqally as important as critical feedback!</h2>
-    <h2 class="rule">Focus on the situation, not the person!</h2>
-    <h2 class="rule">Give recommendations on how to improve!</h2>
-    <h2 class="rule">Most importantly, DON'T BE RUDE!</h2>
-    <img src="http://happyoffice.nl/wp-content/uploads/2017/03/Screen-Shot-2017-03-27-at-14.58.08.png" style="width: 55%">
+    <h3 class="rule">Positive feedback is eqally as important as critical feedback!</h3>
+    <h3 class="rule">Focus on the situation, not the person!</h3>
+    <h3 class="rule">Give recommendations on how to improve!</h3>
+    <h3 class="rule">Most importantly, DON'T BE RUDE!</h3>
+    <img src="http://happyoffice.nl/wp-content/uploads/2017/03/Screen-Shot-2017-03-27-at-14.58.08.png" id="ideaPhoto" style="width: 50%">
 </div>
 
 <div id="sendSomething">
