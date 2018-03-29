@@ -1,7 +1,5 @@
 package login;
 
-import users.User;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,11 +17,19 @@ public class LoginServlet extends HttpServlet{
             throws ServletException, IOException {
 
         String u = request.getParameter("u");
-        String p = request.getParameter("p");
+        String p = request.getParameter("p").trim();
 
-        DBOper d = new DBOper();
-        int value = d.login(u, p);
+        int value = -1;
+        String hp  =  new DBOper().getHashPassword(u);
+        if(hp!=null) {
+            String hashPassword = hp.trim();
 
+
+            if (Password.check(p, hashPassword)) {
+                DBOper d = new DBOper();
+                value = d.login(u, hashPassword);
+            }
+        }
 
         if(value!=-1) { // user logat
             HttpSession session = request.getSession();

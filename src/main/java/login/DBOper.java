@@ -34,12 +34,36 @@ public class DBOper {
         return found;
     }
 
+    public String getHashPassword(String user) {
+
+        String hashPwd=null;
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+
+            PreparedStatement pSt = conn.prepareStatement("SELECT password FROM usersaccounts where (username='"+user+ "' or email='"+ user + "')");
+            ResultSet rs = pSt.executeQuery();
+
+            if(rs.next()) {
+                hashPwd = rs.getString("password");
+            }
+
+            rs.close();
+            pSt.close();
+            conn.close();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return hashPwd;
+    }
 
     /* -1 daca nu am gasit , id-ul daca am gasit */
-    public int register(String email, String user, String pwd, String confirmPwd) {
+    public int register(String email, String user, String pwd) {
 
         int found = -1;
-        if(pwd.equals(confirmPwd)) {
             try {
                 Class.forName("org.postgresql.Driver");
                 Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
@@ -59,9 +83,10 @@ public class DBOper {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        }
         return found;
     }
+
+
 
     public static void main(String[] args) {
 

@@ -23,25 +23,27 @@ public class RegisterServlet extends HttpServlet{
 
         DBOper d = new DBOper();
 
-        d.register(email,name,password,repeatPassword);
-        int value = d.login(name,password);
+        if(password.equals(repeatPassword)) {
+            String p = Password.getSaltedHash(password);
+            d.register(email, name, p);
+            int value = d.login(name, p);
 
-        if(value!=-1) { // user logat
-            HttpSession session = request.getSession();
-            session.setAttribute("userid", value);
-            session.setAttribute("username", name);
-            System.out.println("LoginServlet: bravoooo  ");
+            if (value != -1) { // user logat
+                HttpSession session = request.getSession();
+                session.setAttribute("userid", value);
+                session.setAttribute("username", name);
+                System.out.println("LoginServlet: bravoooo  ");
 
-            response.sendRedirect("opinions.jsp");
-        }
-        else {
-            System.out.println("LoginServlet:registration not done correctly ");
-            String back = "/register.jsp";
-            HttpSession session = request.getSession();
-            session.removeAttribute("userid");
-            session.setAttribute("flagRegister", true);
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(back);
-            dispatcher.forward(request, response);
+                response.sendRedirect("opinions.jsp");
+            } else {
+                System.out.println("LoginServlet:registration not done correctly ");
+                String back = "/register.jsp";
+                HttpSession session = request.getSession();
+                session.removeAttribute("userid");
+                session.setAttribute("flagRegister", true);
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(back);
+                dispatcher.forward(request, response);
+            }
         }
     }
 }

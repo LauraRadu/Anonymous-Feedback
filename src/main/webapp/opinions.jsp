@@ -15,16 +15,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Opinions</title>
-    <link rel="stylesheet" href="opinions.css">
+    <link rel="stylesheet" href="css/opinions.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style type="text/css">
-    @media print{
-        body{ background-color:#FFFFFF; background-image:none; color:#000000 }
-        #ad{ display:none;}
-        #leftbar{ display:none;}
-        #contentarea{ width:100%;}
-    }
+
 </style>
 
 </head>
